@@ -13,20 +13,13 @@ def calculate_object_sizes(yolo_dir, img_dir, exts):
   small = medium = large = 0
   total = 0
 
-  # 定義支持的圖片格式
+  # 定義支援的圖片格式
   image_ext = ['jpg', 'jpeg', 'png', 'webp']
-  """
-  # 獲取基本文件名（不帶擴展名）
-  base_name = os.path.splitext(os.path.basename(txt_file))[0]
 
-  # 創建包含所有可能圖片路徑的列表
-  image_paths = [os.path.join(img_dir, f"{base_name}.{ext}") for ext in image_ext]
-  """
-  # 獲取所有標註文件
+  # 所有標註文件
   for txt_file in glob.glob(os.path.join(yolo_dir, '*.txt')):
     img_file = os.path.join(img_dir, os.path.splitext(os.path.basename(txt_file))[0] + '.' +  exts)
-    # img_file = os.path.join(img_dir, os.path.splitext(os.path.basename(txt_file))[0] + '.png')
-
+    
     if not os.path.exists(img_file):
       continue
 
